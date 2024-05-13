@@ -1,28 +1,42 @@
-import Layout from '../components/layout/Layout';
-import Header from '../components/header/Header';
-import Section from '../components/section/Section';
+import Container from '@mui/material/Box';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Home from '../components/Home/Home';
 
-export default function Home() {
+const theme = createTheme({
+  palette: {
+    background: {
+      default: "#f5f5f5"  // Set your desired background color here
+    },
+    primary: {
+      main: '#556cd6',
+    },
+    secondary: {
+      main: '#19857b',
+    },
+    error: {
+      main: '#red',
+    },
+  },
+  typography: {
+    fontFamily: 'Quicksand',
+  }
+});
+
+export default function App() {
   return (
-    <Layout title="Guide to International Money Transfers">
-      <Header title="Guide to International Money Transfers" />
-
-      <Section title="Using Banks for International Transfers">
-        Banks are the traditional method of sending money overseas...
-      </Section>
-
-      <Section title="Using Wise (formerly Transferwise) for International Transfers">
-        Wise is a popular service for international money transfers...
-      </Section>
-
-      <Section title="Other Money Transfer Services">
-        There are many other services that offer international money transfers...
-      </Section>
-
-      <Section title="Conclusion">
-        When sending money internationally, it's important to consider the fees...
-      </Section>
-
-    </Layout>
+    <ThemeProvider theme={theme}>
+      <Container
+        sx={{
+          width: '100vw',
+          height: '100vh',
+          bgcolor: 'background.default',
+          align: 'center',
+          justifyContent: 'center',
+          padding: '2em',
+        }}
+      >
+        <Home/>
+      </Container>
+    </ThemeProvider >
   );
 }
